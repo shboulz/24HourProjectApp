@@ -11,16 +11,17 @@ namespace _24HR.Data
     public class Reply
     {
         [Key]
-        public int ReplyID { get; set; }
+        public int ReplyId { get; set; }
 
         [Required]
         public string ReplyText { get; set; }
 
         [ForeignKey(nameof(Comment))]
-        public int CommentID { get; set; }
+        public int CommentId { get; set; }
+        public virtual Comment Comment { get; set; }
 
         [Required]
-        public Guid AuthorID { get; set; }
+        public Guid AuthorId { get; set; }
 
     }
 }
