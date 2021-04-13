@@ -13,8 +13,6 @@ namespace _24Hr.Models
         public int CommentId { get; set; }
 
         public string CommentText { get; set; }
-        public Guid AuthorId { get; set; }
 
-        public List<Reply> Replies { get; set; } = new List<Reply>();
     }
 }

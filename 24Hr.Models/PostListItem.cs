@@ -13,5 +13,6 @@ namespace _24Hr.Models
 
         public string Title { get; set; }
 
+      
     }
 }
