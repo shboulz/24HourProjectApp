@@ -13,7 +13,6 @@ namespace _24Hr.Models
 
         public string Title { get; set; }
 
-        [Display(Name="Created")]
-        public DateTimeOffset CreatedUtc { get; set; }
+      
     }
 }
