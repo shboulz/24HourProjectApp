@@ -13,8 +13,11 @@ namespace _24Hr.Models
 
         public string Title { get; set; }
 
+<<<<<<< HEAD
+=======
         //[Display(Name="Created")]
         //public DateTimeOffset CreatedUtc { get; set; }
+>>>>>>> 66096f40d416c90fe872a71b6298a5d1b54cb535
       
     }
 }
