@@ -29,7 +29,7 @@ namespace _24HR.Services
 
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.Post.Add(entity);
+                ctx.Posts.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
         }
@@ -41,16 +41,15 @@ namespace _24HR.Services
             {
                 var query = ctx
                     .Posts
-                    .Where(e => e.Id == _userId)
+                    .Where(e => e.AuthorId == _userId)
                     .Select(
                     e =>
                         new PostListItem
                         {
                             Id = e.Id,
-                            Title = e.Title,
-                            CreatedUtc = e.CreatedUtc
+                            Title = e.Title,                          
                         }
-                        );
+                     );
                 return query.ToArray();
             }
         }
@@ -62,12 +61,45 @@ namespace _24HR.Services
                 var entity =
                     ctx
                         .Posts
-                        .Single(e => e.PostId == id && e.AuthorId == _userId);
+                        .Single(e => e.Id == id && e.AuthorId == _userId);
                 return
                     new PostDetail
                     {
+                        Id = entity.Id,
+                        Title = entity.Title,
+                        Text = entity.Text
+                    };
+            }
+        }
 
-                    }
+        public bool UpdatePost(PostEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Posts
+                        .Single(e => e.Id == model.Id && e.AuthorId == _userId);
+
+                entity.Title = model.Title;
+                entity.Text = model.Text;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeletePost(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Posts
+                        .Single(e => e.Id == id && e.AuthorId == _userId);
+
+                ctx.Posts.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
             }
         }
         
