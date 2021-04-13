@@ -25,7 +25,7 @@ namespace _24HourProject.Controllers
             var comments = commentService.GetComments();
             return Ok(comments);
         }
-        IHttpActionResult Post(CommentCreate comment)
+        public IHttpActionResult Post(CommentCreate comment)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -43,7 +43,7 @@ namespace _24HourProject.Controllers
                 return InternalServerError();
             return Ok();
         }
-        IHttpActionResult Put(CommentEdit comment)
+        public IHttpActionResult Put(CommentEdit comment)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
