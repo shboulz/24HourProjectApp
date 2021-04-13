@@ -15,5 +15,6 @@ namespace _24Hr.Models
 
         //[Display(Name="Created")]
         //public DateTimeOffset CreatedUtc { get; set; }
+      
     }
 }
