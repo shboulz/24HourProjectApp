@@ -13,7 +13,7 @@ namespace _24Hr.Models
        [MinLength(1, ErrorMessage = "cannot be empty. Please enter atleast 1 character")]
        [MaxLength(2000, ErrorMessage = "cannot exceed 2000 characters.")]
         public string CommentText { get; set; }
-        public Guid AuthorId { get; set; }
 
+        public int Id { get; set; }
     }
 }
