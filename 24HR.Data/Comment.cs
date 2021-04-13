@@ -18,7 +18,7 @@ namespace _24HR.Data
         public virtual Post Post { get; set; }
 
         [Required]
-        public string Text { get; set; }
+        public string CommentText { get; set; }
         [Required]
         public Guid AuthorId { get; set; }
         [Required]
