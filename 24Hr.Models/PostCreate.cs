@@ -8,5 +8,7 @@ namespace _24Hr.Models
 {
     public class PostCreate
     {
+
+
     }
 }
