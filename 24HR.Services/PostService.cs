@@ -6,12 +6,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace _24HR.Services
 {
+
     public class PostService
     {
         private readonly Guid _userId;
+        public PostService(Guid userId)
+        {
+            _userId = userId;
+        }
 
         public PostService(Guid userId)
         {
@@ -47,6 +51,7 @@ namespace _24HR.Services
                         new PostListItem
                         {
                             Id = e.Id,
+                            Title = e.Title,
                             Title = e.Title,                          
                         }
                      );
@@ -71,7 +76,6 @@ namespace _24HR.Services
                     };
             }
         }
-
         public bool UpdatePost(PostEdit model)
         {
             using (var ctx = new ApplicationDbContext())
@@ -80,6 +84,11 @@ namespace _24HR.Services
                     ctx
                         .Posts
                         .Single(e => e.Id == model.Id && e.AuthorId == _userId);
+                entity.Title = model.Title;
+                entity.Text = model.Text;
+                return ctx.SaveChanges() == 1;
+            }
+        }
 
                 entity.Title = model.Title;
                 entity.Text = model.Text;
@@ -96,6 +105,10 @@ namespace _24HR.Services
                     ctx
                         .Posts
                         .Single(e => e.Id == id && e.AuthorId == _userId);
+                ctx.Posts.Remove(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
 
                 ctx.Posts.Remove(entity);
 
