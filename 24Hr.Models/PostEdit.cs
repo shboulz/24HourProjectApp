@@ -8,5 +8,8 @@ namespace _24Hr.Models
 {
     public class PostEdit
     {
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public string Text { get; set; }
     }
 }

@@ -8,5 +8,8 @@ namespace _24Hr.Models
 {
     public class ReplyListItem
     {
+        public int ReplyId { get; set; }
+        public string ReplyText { get; set; }
+
     }
 }
