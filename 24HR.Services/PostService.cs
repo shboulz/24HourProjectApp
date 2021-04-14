@@ -17,10 +17,6 @@ namespace _24HR.Services
             _userId = userId;
         }
 
-        public PostService(Guid userId)
-        {
-            _userId = userId;   
-        }
 
         public bool CreatePost(PostCreate model)
         {
@@ -37,7 +33,7 @@ namespace _24HR.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-            
+
 
         public IEnumerable<PostListItem> GetPosts()
         {
@@ -52,7 +48,6 @@ namespace _24HR.Services
                         {
                             Id = e.Id,
                             Title = e.Title,
-                            Title = e.Title,                          
                         }
                      );
                 return query.ToArray();
@@ -90,13 +85,6 @@ namespace _24HR.Services
             }
         }
 
-                entity.Title = model.Title;
-                entity.Text = model.Text;
-
-                return ctx.SaveChanges() == 1;
-            }
-        }
-
         public bool DeletePost(int id)
         {
             using (var ctx = new ApplicationDbContext())
@@ -108,13 +96,8 @@ namespace _24HR.Services
                 ctx.Posts.Remove(entity);
                 return ctx.SaveChanges() == 1;
             }
+           
         }
 
-                ctx.Posts.Remove(entity);
-
-                return ctx.SaveChanges() == 1;
-            }
-        }
-        
     }
 }
